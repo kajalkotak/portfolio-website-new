@@ -8,7 +8,7 @@ import Contact from "./Contact";
 import Footer from "./Footer";
 
 function App() {
-  const myName = "kajal";
+  const myName = "kajal Kotak";
   const myBio =
     "I am Kajal, a passionate web developer learning React and Tailwind CSS. I love creating beautiful and responsive websites.";
 
