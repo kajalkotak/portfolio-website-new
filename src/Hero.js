@@ -1,5 +1,7 @@
 //Hero.js
 
+import Contact2 from "./contact2";
+
 function Hero({ name, theme }) {
   return (
     <header
@@ -18,6 +20,8 @@ function Hero({ name, theme }) {
       >
         View My Work
       </button>
+      <h1>Hello</h1>
+      <Contact2 />
     </header>
   );
 }

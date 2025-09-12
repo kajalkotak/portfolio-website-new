@@ -37,7 +37,7 @@ function App() {
       <Navbar theme={theme} />
 
       <Routes>
-        <Route path="/" element={<Hero theme={theme} name="kajal" />} />
+        <Route path="/" element={<Hero theme={theme} name="kajal" />}  />
         <Route
           path="/about"
           element={
