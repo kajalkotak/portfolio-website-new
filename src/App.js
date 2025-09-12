@@ -1,5 +1,4 @@
-import {Helmet} from "react-helmet";
-
+import { Helmet } from "react-helmet";
 
 import React from "react";
 import logo from "./logo.svg";
@@ -35,57 +34,73 @@ function App() {
   // ];
 
   return (
-
-
     <>
       <Helmet>
-        <title>My Portfolio - Kajal Kotak</title>
-        <meta name="description" content="Personal portfolio of Kajal Kotak - React Developer | Projects | Contact | Blog" />
-        <meta name="keywords" content="React Developer, Portfolio, Kajal Kotak, Projects, Contact Form, Web Development" />
+        <title>Kajal Kotak | React Developer Portfolio</title>
+        <meta
+          name="description"
+          content="Kajal Kotak's personal portfolio showcasing React projects, contact form, dynamic project detail pages, theme toggle, and advanced filtering functionality."
+        />
+        <meta
+          name="keywords"
+          content="React Developer, Portfolio, Projects, Kajal Kotak, Web Development, Contact Form"
+        />
         <meta name="author" content="Kajal Kotak" />
+        <meta name="robots" content="index, follow" />
+        <meta
+          property="og:title"
+          content="Kajal Kotak | React Developer Portfolio"
+        />
+        <meta
+          property="og:description"
+          content="Explore Kajal Kotak’s advanced portfolio with React projects, animations, and SEO-friendly design."
+        />
+        <meta
+          property="og:url"
+          content="https://portfolio-website-new-sfob.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
       </Helmet>
-    
 
+      <div
+        className={`${
+          theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
+        } p-1 text-center min-h-screen transition-colors duration-500`}
+      >
+        <Navbar theme={theme} />
 
+        <Routes>
+          <Route path="/" element={<Hero theme={theme} name="kajal" />} />
+          <Route
+            path="/about"
+            element={
+              <About theme={theme} bio="I am Kajal, passionate about React." />
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <Projects
+                projects={[
+                  { title: "Project One", description: "React + Tailwind CSS" },
+                  {
+                    title: "Project Two",
+                    description: "React + API Integration",
+                  },
+                ]}
+                theme={theme}
+              />
+            }
+          />
+          <Route
+            path="/projects/:id"
+            element={<ProjectDetail theme={theme} />}
+          />
+          <Route path="/myprojects" element={<MyProjects theme={theme} />} />
+          <Route path="/contact" element={<Contact theme={theme} />} />
+        </Routes>
 
-
-
-    <div
-      className={`${
-        theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-1 text-center min-h-screen transition-colors duration-500`}
-    >
-      <Navbar theme={theme} />
-
-      <Routes>
-        <Route path="/" element={<Hero theme={theme} name="kajal" />} />
-        <Route
-          path="/about"
-          element={
-            <About theme={theme} bio="I am Kajal, passionate about React." />
-          }
-        />
-        <Route
-          path="/projects"
-          element={
-            <Projects
-              projects={[
-                { title: "Project One", description: "React + Tailwind CSS" },
-                {
-                  title: "Project Two",
-                  description: "React + API Integration",
-                },
-              ]}
-              theme={theme}
-            />
-          }
-        />
-        <Route path="/projects/:id" element={<ProjectDetail theme={theme} />} />
-        <Route path="/myprojects" element={<MyProjects theme={theme} />} />
-        <Route path="/contact" element={<Contact theme={theme} />} />
-      </Routes>
-      
-      {/* <section
+        {/* <section
         id="hero"
         className="min-h-screen flex flex-col items-center justify-center"
       >
@@ -103,8 +118,8 @@ function App() {
       <section id="contact">
         <Contact />
       </section>*/}
-      {/* <Footer /> */}
-    </div>
+        {/* <Footer /> */}
+      </div>
     </>
   );
   <Footer />;
