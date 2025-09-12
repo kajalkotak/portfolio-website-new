@@ -1,3 +1,6 @@
+import {Helmet} from "react-helmet";
+
+
 import React from "react";
 import logo from "./logo.svg";
 import { useContext } from "react";
@@ -7,9 +10,11 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import About from "./About";
 import Projects from "./Projects";
+import ProjectDetail from "./ProjectDetail";
 import MyProjects from "./My-projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   const { theme } = useContext(AppContext);
@@ -30,6 +35,21 @@ function App() {
   // ];
 
   return (
+
+
+    <>
+      <Helmet>
+        <title>My Portfolio - Kajal Kotak</title>
+        <meta name="description" content="Personal portfolio of Kajal Kotak - React Developer | Projects | Contact | Blog" />
+        <meta name="keywords" content="React Developer, Portfolio, Kajal Kotak, Projects, Contact Form, Web Development" />
+        <meta name="author" content="Kajal Kotak" />
+      </Helmet>
+    
+
+
+
+
+
     <div
       className={`${
         theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
@@ -60,9 +80,11 @@ function App() {
             />
           }
         />
+        <Route path="/projects/:id" element={<ProjectDetail theme={theme} />} />
         <Route path="/myprojects" element={<MyProjects theme={theme} />} />
         <Route path="/contact" element={<Contact theme={theme} />} />
       </Routes>
+      
       {/* <section
         id="hero"
         className="min-h-screen flex flex-col items-center justify-center"
@@ -83,6 +105,7 @@ function App() {
       </section>*/}
       {/* <Footer /> */}
     </div>
+    </>
   );
   <Footer />;
 }

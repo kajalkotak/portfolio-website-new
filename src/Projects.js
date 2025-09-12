@@ -6,71 +6,75 @@ import ProjectCard from "./ProjectCard";
 
 function Projects(theme) {
   const [projects, setProjects] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts") //example API
       .then((response) => response.json())
-      .then((data) => setProjects(data.slice(0, 5))) // take first 5 post  as projects
+      .then((data) => {
+        const firstFive = data.slice(0, 10).map((project, index) => ({
+          ...project,
+          category: index % 2 === 0 ? "Web App" : "Mobile App",
+        }));
+        setProjects(firstFive);
+        setFilteredProjects(firstFive);
+      })
       .catch((error) => console.error("error fetching data:", error));
   }, []);
+
+  // ✅ Filter projects based on search term
+
+  useEffect(() => {
+    let filtered = projects.filter((project) =>
+      project.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    if (category) {
+      filtered = filtered.filter((project) => project.category === category);
+    }
+    setFilteredProjects(filtered);
+  }, [searchTerm, category, projects]);
+
   return (
-    <section
-      className={`${
-        theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-1 text-center  w-full py-20 px-5`}
-    >
-      <div
-        className={`${
-          theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-        } p-10 text-center max-w-6xl mx-auto text-center`}
-      >
-        <h2
-          className={`${
-            theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-          } p-10 text-center text-4xl font-bold  mb-10`}
+    <section className={"bg-white text-black py-20 px-5"}>
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-10">My Projects</h2>
+
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="p-3 rounded border mb-5"
         >
-          My Projects
-        </h2>
+          <option value="">All Category</option>
+          <option value="Web App">Web App</option>
+          <option value="Mobile App">Mobile App</option>
+        </select>
 
-        {projects.length === 0 ? (
-          <p>Loading projects....</p>
+        <input
+          type="text"
+          placeholder="search projects by title...."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="p-3 rounded border w-full max-w md mb-10"
+        />
+
+        {filteredProjects.length === 0 ? (
+          <p>No Projects Found</p>
         ) : (
-          projects.map((project) => (
-            <div
-              key={project.id}
-              className={`${
-                theme === "light"
-                  ? "bg-white text-black"
-                  : "bg-gray-800 text-white"
-              } p-10 text-center mb-5 p-5 border rounded-lg shadow-md`}
-            >
-              <h3
-                className={`${
-                  theme === "light"
-                    ? "bg-white text-black"
-                    : "bg-gray-800 text-white"
-                } p-10 text-center text-2xl font-semibold`}
-              >
-                {project.title}
-              </h3>
-              <p
-                className={`${
-                  theme === "light"
-                    ? "bg-white text-black"
-                    : "bg-gray-800 text-white"
-                } p-10 text-center`}
-              >
-                {project.body}
-              </p>
-            </div>
-          ))
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                id={project.id} // important for dynamic route
+                title={project.title}
+                description={project.body}
+                theme={theme}
+              />
+            ))}
+          </div>
         )}
-
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) =>(
-            <ProjectCard key={index} title={project.title} description={project.description} />
-          ))}
-        </div> */}
       </div>
     </section>
   );
