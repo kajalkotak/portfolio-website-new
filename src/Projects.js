@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 import ProjectCard from "./ProjectCard";
 
-function Projects() {
+function Projects(theme) {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -14,9 +14,23 @@ function Projects() {
       .catch((error) => console.error("error fetching data:", error));
   }, []);
   return (
-    <section className="bg-gray-100 w-full py-20 px-5">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-10">My Projects</h2>
+    <section
+      className={`${
+        theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
+      } p-10 text-center  w-full py-20 px-5`}
+    >
+      <div
+        className={`${
+          theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
+        } p-10 text-center max-w-6xl mx-auto text-center`}
+      >
+        <h2
+          className={`${
+            theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
+          } p-10 text-center text-4xl font-bold  mb-10`}
+        >
+          My Projects
+        </h2>
 
         {projects.length === 0 ? (
           <p>Loading projects....</p>
@@ -24,12 +38,30 @@ function Projects() {
           projects.map((project) => (
             <div
               key={project.id}
-              className="mb-5 p-5 border rounded-lg shadow-md"
+              className={`${
+                theme === "light"
+                  ? "bg-white text-black"
+                  : "bg-gray-800 text-white"
+              } p-10 text-center mb-5 p-5 border rounded-lg shadow-md`}
             >
-              <h3 className="text-2xl font-semibold text-blue-600">
+              <h3
+                className={`${
+                  theme === "light"
+                    ? "bg-white text-black"
+                    : "bg-gray-800 text-white"
+                } p-10 text-center text-2xl font-semibold`}
+              >
                 {project.title}
               </h3>
-              <p>{project.body}</p>
+              <p
+                className={`${
+                  theme === "light"
+                    ? "bg-white text-black"
+                    : "bg-gray-800 text-white"
+                } p-10 text-center`}
+              >
+                {project.body}
+              </p>
             </div>
           ))
         )}
