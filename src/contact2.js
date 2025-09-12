@@ -1,6 +1,7 @@
 //contact2.js
 
 import { useState } from "react";
+import emailjs from "emailjs-com";
 
 function Contact2() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ function Contact2() {
     message: "",
   });
   const [errors, setErrors] = useState({});
+  const [successMsg, setSuccessMsg] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -21,21 +23,39 @@ function Contact2() {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = "name is required";
     if (!formData.email.trim()) newErrors.email = "email is required";
-    else if (!/\s+@\s+\.\s+/.test(formData.email))
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = "email is invalid";
-    if (formData.message.trim()) newErrors.message = "message is required";
+    if (!formData.message.trim()) newErrors.message = "message is required";
+
     return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate;
+    const validationErrors = validate();
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      console.log("form submitted", formData);
-      alert("form submitted successfully");
-      setFormData({ name: "", email: "", message: "" });
+      emailjs
+        .send(
+          "service_9qz6vfr",
+          "template_default1234",
+          formData,
+          "qiL6YhnaIdH2_LIoV"
+        )
+
+        .then(
+          (result) => {
+            // Fix: Use 'result' here
+            console.log("SUCCESS!", result.status, result.text);
+            setSuccessMsg("Message sent successfully ✅");
+            setFormData({ name: "", email: "", message: "" }); // Clear form
+          },
+          (error) => {
+            // Fix: Use 'error' here
+            console.error("FAILED...", error);
+          }
+        );
     }
   };
 
@@ -44,7 +64,15 @@ function Contact2() {
       <div className="max-w-md mx-auto my-10 p-5 bg-white rounded shadow">
         <h2 className="text-2xl font-bold mb-5 text-center">Contact Me</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {successMsg && (
+          <p className="text-green-500 text-center">{successMsg}</p>
+        )}
+
+        <form
+          action="https://formspree.io/f/movnbewe"
+          method="POST"
+          className="space-y-4"
+        >
           {/* Name */}
           <div>
             <label className="block mb-1">Name</label>

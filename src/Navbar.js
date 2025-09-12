@@ -10,12 +10,12 @@ function Navbar() {
     <nav
       className={`${
         theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-10 text-center p-5 flex justify-between items-center`}
+      } p-1 text-center p-1 flex justify-between items-center`}
     >
       <h1
         className={`${
           theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-        } p-10 text-center`}
+        } p-1 text-center`}
       >
         Welcome, {user.name}
       </h1>
@@ -23,33 +23,67 @@ function Navbar() {
       <ul
         className={`${
           theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-        } p-10 text-center flex space-x-6`}
+        } p-1 text-center flex space-x-6`}
       >
         <li>
-          <Link to="/" className= {`${
-        theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-10 text-center hover:text-blue-400`}>
+          <Link
+            to="/"
+            className={`${
+              theme === "light"
+                ? "bg-white text-black"
+                : "bg-gray-800 text-white"
+            } p-1 text-center hover:text-blue-400`}
+          >
             Home
           </Link>
         </li>
         <li>
-          <Link to="/about" className= {`${
-        theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-10 text-center hover:text-blue-400`}>
+          <Link
+            to="/about"
+            className={`${
+              theme === "light"
+                ? "bg-white text-black"
+                : "bg-gray-800 text-white"
+            } p-1 text-center hover:text-blue-400`}
+          >
             About
           </Link>
         </li>
+
         <li>
-          <Link to="/projects" className= {`${
-        theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-10 text-center hover:text-blue-400`}>
+          <Link
+            to="/myprojects"
+            className={`${
+              theme === "light"
+                ? "bg-white text-black"
+                : "bg-gray-800 text-white"
+            } p-1 text-center hover:text-blue-400`}
+          >
+            My Projects
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            to="/projects"
+            className={`${
+              theme === "light"
+                ? "bg-white text-black"
+                : "bg-gray-800 text-white"
+            } p-1 text-center hover:text-blue-400`}
+          >
             Projects
           </Link>
         </li>
         <li>
-          <Link to="/contact" className= {`${
-        theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-10 text-center hover:text-blue-400`}>
+          <Link
+            to="/contact"
+            className={`${
+              theme === "light"
+                ? "bg-white text-black"
+                : "bg-gray-800 text-white"
+            } p-1 text-center hover:text-blue-400`}
+          >
             Contact
           </Link>
         </li>

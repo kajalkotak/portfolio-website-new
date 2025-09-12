@@ -7,7 +7,7 @@ function Hero({ name, theme }) {
     <header
       className={`${
         theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-10 text-center`}
+      } p-1 text-center`}
     >
       <h1 className="text-5xl font-extrabold mb-5">Hello, I am {name}!</h1>
       <p>Welcome to my portfolio website.</p>

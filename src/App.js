@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import About from "./About";
 import Projects from "./Projects";
+import MyProjects from "./My-projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
 
@@ -37,7 +38,7 @@ function App() {
       <Navbar theme={theme} />
 
       <Routes>
-        <Route path="/" element={<Hero theme={theme} name="kajal" />}  />
+        <Route path="/" element={<Hero theme={theme} name="kajal" />} />
         <Route
           path="/about"
           element={
@@ -59,6 +60,7 @@ function App() {
             />
           }
         />
+        <Route path="/myprojects" element={<MyProjects theme={theme} />} />
         <Route path="/contact" element={<Contact theme={theme} />} />
       </Routes>
       {/* <section

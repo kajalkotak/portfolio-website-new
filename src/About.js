@@ -5,7 +5,7 @@ function About({ bio, theme }) {
     <section
       className={`${
         theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-10 text-center w-full py-20 px-5`}
+      } p-1 text-center w-full py-20 px-5`}
     >
       <div
         className={`${

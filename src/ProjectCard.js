@@ -5,7 +5,7 @@ function ProjectCard({ title, description, theme }) {
     <div
       className={`${
         theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
-      } p-10 text-center rounded-lg shadow-lg p-5`}
+      } p-1 text-center rounded-lg shadow-lg p-5`}
     >
       <h3
         className={`${
@@ -26,5 +26,3 @@ function ProjectCard({ title, description, theme }) {
 }
 
 export default ProjectCard;
-
-
