@@ -8,9 +8,9 @@ function MyProjects() {
       link: "https://portfolio-website-new-jade.vercel.app/",
     },
     {
-      title: "Todo App",
-      description: "A simple Todo App to manage daily tasks using React.",
-      link: "#",
+      title: "React Note App",
+      description: "A simple Note App to manage daily tasks using React.",
+      link: "https://react-notes-app-e89t.vercel.app/",
     },
     {
       title: "Weather App",
