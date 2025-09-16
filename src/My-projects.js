@@ -14,7 +14,7 @@ function MyProjects() {
     },
     {
       title: "React To Do App",
-      description: "Check real-time weather using OpenWeather API in React.",
+      description: "A To-Do App with React featuring categories, search, pagination, notifications, and local storage.",
       link: "https://portfolio-website-new-jade.vercel.app/",
     },
   ];
