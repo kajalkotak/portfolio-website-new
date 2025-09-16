@@ -15,7 +15,7 @@ function MyProjects() {
     {
       title: "React To Do App",
       description: "A To-Do App with React featuring categories, search, pagination, notifications, and local storage.",
-      link: "https://portfolio-website-new-jade.vercel.app/",
+      link: "https://react-to-do-app-alpha-three.vercel.app/",
     },
   ];
 
