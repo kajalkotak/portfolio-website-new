@@ -13,9 +13,9 @@ function MyProjects() {
       link: "https://react-notes-app-e89t.vercel.app/",
     },
     {
-      title: "Weather App",
+      title: "React To Do App",
       description: "Check real-time weather using OpenWeather API in React.",
-      link: "#",
+      link: "https://portfolio-website-new-jade.vercel.app/",
     },
   ];
 
