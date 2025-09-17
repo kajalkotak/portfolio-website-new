@@ -17,6 +17,11 @@ function MyProjects() {
       description: "A To-Do App with React featuring categories, search, pagination, notifications, and local storage.",
       link: "https://react-to-do-app-alpha-three.vercel.app/",
     },
+    {
+      title: "Recipe Finder App",
+      description: "Recipe Finder App built in React",
+      link: "https://recipe-finder-app-jb7s.vercel.app/",
+    },
   ];
 
   return (
