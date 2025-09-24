@@ -22,6 +22,17 @@ function MyProjects() {
       description: "Recipe Finder App built in React",
       link: "https://recipe-finder-app-jb7s.vercel.app/",
     },
+    {
+      title: "Product listing App",
+      description: "Product listing App built in React",
+      link: "https://recipe-finder-app-jb7s.vercel.app/",
+    },
+    {
+      title: "React Blog App",
+      description: "React Blog App built in React",
+      link: "https://react-blog-app-rho-one.vercel.app/blog",
+    },
+    
   ];
 
   return (
