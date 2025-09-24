@@ -25,7 +25,7 @@ function MyProjects() {
     {
       title: "Product listing App",
       description: "Product listing App built in React",
-      link: "https://recipe-finder-app-jb7s.vercel.app/",
+      link: "https://github.com/kajalkotak/React-Product-listing-new-version",
     },
     {
       title: "React Blog App",
